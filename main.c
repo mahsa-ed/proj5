@@ -31,12 +31,12 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
 
     fscanf(gameFile,"%d",&Ccount); //قرار گیری قلمرو ها
     Coordinates Castle[Ccount];
-    scanf("%d %d", &i, &j);
+    fscanf(gameFile,"%d %d", &i, &j);
     Map[i - 1][j - 1] = 'C';
     Castle[0].x= i-1 ;
     Castle[0].y= j-1 ;
     for (k = 1; k < Ccount; k++) {
-        scanf("%d %d", &i, &j);
+        fscanf(gameFile,"%d %d", &i, &j);
         Map[i - 1][j - 1] = 'c';
         Castle[k].x= i-1 ;
         Castle[k].y= j-1 ;
@@ -46,16 +46,16 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
     Coordinates Village[Vcount];
     Rates vRate[Vcount];
     for (k = 0; k < Vcount; k++) {
-        scanf("%d %d", &i, &j);
+        fscanf(gameFile,"%d %d", &i, &j);
         Map[i - 1][j - 1] = 'V';
-        scanf("%d %d",&vRate[k].goldRate, &vRate[k].foodRate);
+        fscanf(gameFile,"%d %d",&vRate[k].goldRate, &vRate[k].foodRate);
         Village[k].x = i-1;
         Village[k].y = j-1;
     }
 
     fscanf(gameFile,"%d",&Xcount);//قرار گیری خانه های مسدود
     for (k = 0; k < Xcount; k++) {
-        scanf("%d %d", &i, &j);
+        fscanf(gameFile,"%d %d", &i, &j);
         Map[i - 1][j - 1] = 'X';
     }
 
