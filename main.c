@@ -14,17 +14,22 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
     Ruler player1={0, 1, 0, 1, 5, 0}; //دارایی های اولیه بازیکنان
     Ruler player2={0, 1, 0, 1, 5, 0};
     char map1[MAXSIZE][MAXSIZE], map2[MAXSIZE][MAXSIZE];
+    FILE *gameFile;
+    int play_choice;
+    gameFile = fopen("Game.txt", "r");
+    if (!gameFile) {
+        printf("Error opening file\n");
+        return 1;
+    }
 
-    printf("please enter the map size ");
-    scanf("%d", &size);
+    fscanf(gameFile,"%d",&size);
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
             Map[i][j] = '1';
         }
     }
 
-    printf("please enter the number of castles and coordinates ");
-    scanf("%d", &Ccount); //قرار گیری قلمرو ها
+    fscanf(gameFile,"%d",&Ccount); //قرار گیری قلمرو ها
     Coordinates Castle[Ccount];
     scanf("%d %d", &i, &j);
     Map[i - 1][j - 1] = 'C';
@@ -37,8 +42,7 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
         Castle[k].y= j-1 ;
     }
 
-    printf("please enter the number of villages, coordinates,gold rate and food rate ");
-    scanf("%d", &Vcount); //قرار گیری روستا ها و نرخ تولید
+    fscanf(gameFile,"%d",&Vcount); //قرار گیری روستا ها و نرخ تولید
     Coordinates Village[Vcount];
     Rates vRate[Vcount];
     for (k = 0; k < Vcount; k++) {
@@ -49,8 +53,7 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
         Village[k].y = j-1;
     }
 
-    printf("please enter the number of blocked houses and coordinates ");
-    scanf("%d", &Xcount);//قرار گیری خانه های مسدود
+    fscanf(gameFile,"%d",&Xcount);//قرار گیری خانه های مسدود
     for (k = 0; k < Xcount; k++) {
         scanf("%d %d", &i, &j);
         Map[i - 1][j - 1] = 'X';
