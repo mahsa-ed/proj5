@@ -15,7 +15,7 @@ int main(void) { //قلمرو بازیکن1 با C و حاده ها با R نم�
     Ruler player2={0, 1, 0, 1, 5, 0};
     char map1[MAXSIZE][MAXSIZE], map2[MAXSIZE][MAXSIZE];
     FILE *gameFile;
-    int play_choice;
+    
     gameFile = fopen("Game.txt", "r");
     if (!gameFile) {
         printf("Error opening file\n");
